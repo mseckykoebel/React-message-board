@@ -1,4 +1,4 @@
-# Ladder React Challenge
+# React message board
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -37,7 +37,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### UI
 
-The UI for this app remains mainly un-changed from the original Figma mock-ups. The app UI uses a mix of modified [Ionic Components](https://ionicframework.com/docs/components), and custom CSS. I liked the UI and didn't think it needed a lot of changes.
+The app UI uses a mix of modified [Ionic Components](https://ionicframework.com/docs/components), and custom CSS.
 
 ### UX
 
@@ -64,13 +64,3 @@ A setTimeout() checks this localStorage array every once and awhile to see if an
 _Improvements to this:_
 
 Two obvious things: scheduling down to the minute, and a more graceful way of checking localStorage for the messages.
-
-### Final thoughts
-
-The only thing I would change about the DB structure is adding the messages collection as a sub-collection under some sort of user collection. This would allow for more interesting behavior at a per-user basis, as well as collection-group queries (one of my favorite firestore features), which allows for making queries across all of the messages collections even if they are set up as sub-collections under the user collections. I would not make a DB collection for scheduled messages as of yet (server check >>> LS check in terms of time), but this would need to be done if the user expects to use ladder on more than just one device (also, cache can be cleared). Soon, IMO, this would be a worthwhile compromise.
-
-In terms of learning things, I had never used `.startAfter()` query parameter for firestore yet. This was needed for pagination and starting a query for documents after some previous document. I think my solution works really well here, as it prevents a lot of excessive reads, but readability took a hit, which would be my next big improvement to this.
-
-In term of improvements, I would love to see a messageBoard populated by more than one user and user authentication. This would allow for some interesting filters. On top of this, maybe a rich-text message board? Images? File upload? The challenge is great as it is but those would be some cool extra-credit features :).
-
-As a bonus I also added a service worker. Some more work here could be done (webpack, SSR, custom icons and splash screens, and ionic capacitor for rendering webview-powered native apps).
